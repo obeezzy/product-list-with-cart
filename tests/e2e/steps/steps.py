@@ -184,6 +184,6 @@ def step_impl(context):
         not_located = WebDriverWait(driver, TIMEOUT).until_not(
             EC.presence_of_element_located((By.CSS_SELECTOR, "#cart .item"))
         )
-        assert not_located == True, "Cart is not empty"
+        assert not_located, "Cart is not empty"
     except TimeoutException:
         print(f"Element not found after {TIMEOUT} seconds.")
