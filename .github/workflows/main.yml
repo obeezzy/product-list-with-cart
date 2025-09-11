@@ -37,6 +37,10 @@ jobs:
         run: pkill -f chrome || true
       - name: Kill any leftover Chromium processes
         run: pkill -f chromium || true
+      - name: Chromium and ChromeDriver version
+        run: |
+          chromium --version
+          chromedriver --version
       - name: Test with behave
         run: |
           export PYTHONPATH=.
