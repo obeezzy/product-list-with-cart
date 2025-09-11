@@ -26,9 +26,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y chromium-chromedriver
+        sudo apt install -y chromium-browser chromium-chromedriver
         which chromedriver
         chromedriver --version
+        which chromium
+        chromium --version
         python -m pip install --upgrade pip
         python -m pip install flake8
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi

@@ -57,14 +57,17 @@ def before_all(context):
                                              stderr=subprocess.PIPE)
     context.base_url = f"http://localhost:{FLASK_PORT}/"
     brave_path = get_brave_path()
-    chrome_driver_path = get_chrome_driver_path()
+    chromium_path = get_chromium_path()
     if brave_path is not None:
         chrome_options = Options()
         chrome_options.binary_location = brave_path
         context.chrome_options = chrome_options
-    elif chrome_driver_path is not None:
+    elif chromium_path is not None:
         chrome_options = Options()
-        chrome_options.binary_location = chrome_driver_path
+        chrome_options.binary_location = chromium_path
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
         context.chrome_options = chrome_options
 
     time.sleep(1)
