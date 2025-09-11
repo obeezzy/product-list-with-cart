@@ -57,19 +57,14 @@ def before_all(context):
                                              stderr=subprocess.PIPE)
     context.base_url = f"http://localhost:{FLASK_PORT}/"
     brave_path = get_brave_path()
-    chromium_path = get_chromium_path()
-    chrome_driver = get_chrome_driver_path()
+    chrome_driver_path = get_chrome_driver_path()
     if brave_path is not None:
         chrome_options = Options()
         chrome_options.binary_location = brave_path
         context.chrome_options = chrome_options
-    elif chromium_path is not None:
+    elif chrome_driver_path is not None:
         chrome_options = Options()
-        chrome_options.binary_location = chromium_path
-        context.chrome_options = chrome_options
-    elif chrome_driver is not None:
-        chrome_options = Options()
-        chrome_options.binary_location = chrome_driver
+        chrome_options.binary_location = chrome_driver_path
         context.chrome_options = chrome_options
 
     time.sleep(1)
