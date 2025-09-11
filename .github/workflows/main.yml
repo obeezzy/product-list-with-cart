@@ -31,15 +31,25 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
           flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
-      - name: Install Chromium
-        run: sudo apt install -y chromium-browser chromium-chromedriver
+      - name: Install Google Chrome
+        run: |
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      - name: Install ChromeDriver (auto-detect version)
+        run: |
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+          wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
+          unzip /tmp/chromedriver.zip -d /tmp/
+          sudo mv /tmp/chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
       - name: Kill any leftover Chrome processes
         run: pkill -f chrome || true
-      - name: Kill any leftover Chromium processes
-        run: pkill -f chromium || true
       - name: Chromium and ChromeDriver version
         run: |
-          chromium --version
+          google-chrome --version
           chromedriver --version
       - name: Test with behave
         run: |
