@@ -39,7 +39,7 @@ jobs:
           sudo apt-get install -y google-chrome-stable
       - name: Install ChromeDriver (auto-detect version)
         run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+          CHROME_VERSION=$(google-chrome-stable --version | grep -oP '\d+\.\d+\.\d+' | head -1)
           DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
           wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
           unzip /tmp/chromedriver.zip -d /tmp/
@@ -49,7 +49,7 @@ jobs:
         run: pkill -f chrome || true
       - name: Chromium and ChromeDriver version
         run: |
-          google-chrome --version
+          google-chrome-stable --version
           chromedriver --version
       - name: Test with behave
         run: |
