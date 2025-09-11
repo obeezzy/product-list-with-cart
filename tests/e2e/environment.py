@@ -1,5 +1,4 @@
 import subprocess
-import os
 import time
 from pathlib import Path
 from selenium.webdriver.chrome.options import Options
@@ -8,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 
 APP_DIR = Path(__file__).resolve().parent.parent.parent
 FLASK_PORT = 8880
+
 
 def get_brave_path():
     """Runs 'which brave' and returns the path if found, otherwise None."""
@@ -19,6 +19,7 @@ def get_brave_path():
         return None
     except FileNotFoundError:
         return None
+
 
 def before_all(context):
     context.flask_process = subprocess.Popen(['python',
@@ -39,6 +40,7 @@ def before_all(context):
 
     time.sleep(1)
     print(f"Flask server started at {context.base_url} in the background.")
+
 
 def after_all(context):
     if hasattr(context, "driver"):
