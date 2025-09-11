@@ -65,7 +65,8 @@ def before_all(context):
         context.chrome_options = chrome_options
     elif chromium_path is not None:
         chrome_options = Options()
-        chrome_options.binary_location = chromium_path
+        print("j2k What is chromium_path=", chromium_path)
+        #chrome_options.binary_location = chromium_path
         chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
