@@ -21,6 +21,18 @@ def get_brave_path():
         return None
 
 
+def get_chromium_path():
+    """Runs 'which chromium' and returns the path if found, otherwise None."""
+    try:
+        process = subprocess.run(['which', 'chromium'], capture_output=True, text=True, check=True)
+        chromium_path = process.stdout.strip()
+        return chromium_path
+    except subprocess.CalledProcessError:
+        return None
+    except FileNotFoundError:
+        return None
+
+
 def before_all(context):
     context.flask_process = subprocess.Popen(['python',
                                               "-m",
@@ -33,9 +45,14 @@ def before_all(context):
                                              stderr=subprocess.PIPE)
     context.base_url = f"http://localhost:{FLASK_PORT}/"
     brave_path = get_brave_path()
+    chromium_path = get_chromium_path()
     if brave_path is not None:
         chrome_options = Options()
         chrome_options.binary_location = brave_path
+        context.chrome_options = chrome_options
+    elif chromium_path is not None:
+        chrome_options = Options()
+        chrome_options.binary_location = chromium_path
         context.chrome_options = chrome_options
 
     time.sleep(1)
