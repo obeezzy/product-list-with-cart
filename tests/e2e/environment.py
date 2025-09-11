@@ -65,8 +65,7 @@ def before_all(context):
         context.chrome_options = chrome_options
     elif chromium_path is not None:
         chrome_options = Options()
-        print("j2k What is chromium_path=", chromium_path)
-        # chrome_options.binary_location = chromium_path
+        chrome_options.binary_location = chromium_path
         chrome_options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
@@ -77,12 +76,14 @@ def before_all(context):
     print(f"Flask server started at {context.base_url} in the background.")
 
 
-def after_all(context):
+def after_scenario(context, scenario):
     if hasattr(context, "driver"):
         if context.driver:
             context.driver.quit()
             print("Browser closed.")
 
+
+def after_all(context):
     if hasattr(context, 'flask_process') and context.flask_process.poll() is None:
         context.flask_process.terminate()
         context.flask_process.wait(timeout=5)
