@@ -41,4 +41,4 @@ jobs:
       - name: Test with behave
         run: |
           export PYTHONPATH=.
-          behave
+          behave tests/e2e
