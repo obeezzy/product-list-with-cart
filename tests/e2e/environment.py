@@ -36,7 +36,7 @@ def get_chromium_path():
 def get_chrome_driver_path():
     """Runs 'which chromium' and returns the path if found, otherwise None."""
     try:
-        process = subprocess.run(['which', 'chromium'], capture_output=True, text=True, check=True)
+        process = subprocess.run(['which', 'chromedriver'], capture_output=True, text=True, check=True)
         chromium_path = process.stdout.strip()
         return chromium_path
     except subprocess.CalledProcessError:
@@ -58,7 +58,7 @@ def before_all(context):
     context.base_url = f"http://localhost:{FLASK_PORT}/"
     brave_path = get_brave_path()
     chromium_path = get_chromium_path()
-    chrome_driver = get_chrome_driver_path():
+    chrome_driver = get_chrome_driver_path()
     if brave_path is not None:
         chrome_options = Options()
         chrome_options.binary_location = brave_path
