@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Product list with cart">
+        <meta name="author" content="Chronic Coder">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="{{ url_for('static', filename='assets/images/favicon-32x32.png') }}">
+        <script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <title>Frontend Mentor | Product list with cart</title>
+    </head>
+    <body id="index">
+        <div class="container">
+            <div id="menu-section">
+                <h1>Desserts</h1>
+                <div id="menu">
+                    {%- for item in data %}
+                        <div class="item" data-key="{{ item.key }}" data-thumbnail="{{ item.image.thumbnail }}" data-thumbnail-alt="{{ item.image.alt.thumbnail }}">
+                            <div class="image">
+                                <img srcset="{{ item.image.mobile }} 320w,
+                                             {{ item.image.tablet }} 767w,
+                                             {{ item.image.desktop  }} 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="{{ item.image.desktop }}"
+                                     alt="{{ item.image.alt.desktop }}">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="{{ item.key }}">
+                                        <svg class="icon cart">
+                                            <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-add-to-cart') }}" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="{{ item.key }}">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-decrement-quantity') }}" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-increment-quantity') }}" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">{{ item.category }}</h2>
+                                <p class="title">{{ item.name }}</p>
+                                <p class="price">{{ item.price }}</p>
+                            </div>
+                        </div>
+                    {%- endfor %}
+                </div>
+            </div>
+            <div id="cart-section">
+                <div id="cart">
+                    <h2>Your Cart (<span id="order-quantity">0</span>)</h2>
+                    <div id="empty-cart-section">
+                        <svg class="icon empty-cart">
+                            <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='illustration-empty-cart') }}"></use>
+                        </svg>
+                        <p id="empty-cart-message">Your added items will appear here</p>
+                    </div>
+                    <div id="cart-content">
+                    </div>
+                    <div id="cart-footer" class="hidden">
+                        <div id="order-total-section">
+                            <span class="order-total-label">Order Total</span>
+                            <span id="order-total">$0.00</span>
+                        </div>
+                        <div id="order-info">
+                            <svg class="icon carbon-neutral">
+                                <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-carbon-neutral') }}">></use>
+                            </svg>
+                            <p id="carbon-neutral-message">This is a <span class="bold">carbon-neutral</span> delivery</p>
+                        </div>
+                        <button id="confirm-order-button">Confirm Order</button>
+                    </div>
+                    <template id="cart-item-template">
+                        <div class="item" data-key="data-key">
+                            <div class="info">
+                                <span class="title">Item Title</span>
+                                <div class="details">
+                                    <span class="quantity">2x</span>
+                                    <span class="at-sign">@</span>
+                                    <span class="price">$5.00</span>
+                                    <span class="total-cost">$10.00</span>
+                                </div>
+                            </div>
+                            <button class="remove-from-cart-button" data-key="data-key">
+                                <svg class="remove icon">
+                                    <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-remove-item') }}"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <dialog id="order-summary-dialog">
+            <svg class="icon order-confirmed">
+                <use href="{{ url_for('static', filename='icons/icons.svg', _anchor='icon-order-confirmed') }}"></use>
+            </svg>
+            <div id="order-summary-header">
+                <h2>Order Confirmed</h2>
+                <p>We hope you enjoy your food!</p>
+            </div>
+            <div id="order-summary-content">
+                <div id="order-summary-items"></div>
+                <div id="order-summary-total-section">
+                    <span class="order-total-label">Order Total</span>
+                    <span id="order-summary-total">$0.00</span>
+                </div>
+            </div>
+            <button id="start-new-order-button">Start New Order</button>
+            <template id="order-summary-item-template">
+                <div class="item" data-key="data-key">
+                    <img class="thumbnail">
+                    <div class="info">
+                        <div class="details">
+                            <span class="title">Item Title</span>
+                            <div class="attributes">
+                                <span class="quantity">2x</span>
+                                <span class="at-sign">@</span>
+                                <span class="price">$5.00</span>
+                            </div>
+                        </div>
+                        <span class="total-cost">$10.00</span>
+                    </div>
+                </div>
+            </template>
+        </dialog>
+    </body>
+</html>
