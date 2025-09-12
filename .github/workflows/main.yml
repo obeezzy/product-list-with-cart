@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -45,13 +45,11 @@ jobs:
           unzip /tmp/chromedriver.zip -d /tmp/
           sudo mv $(find /tmp -iname chromedriver | head -1) /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-      - name: Kill any leftover Chrome processes
-        run: pkill -f chrome || true
-      - name: Chromium and ChromeDriver version
+      - name: Confirm Chrome and ChromeDriver version
         run: |
           google-chrome --version
           chromedriver --version
-      - name: Test with behave
+      - name: Run behavior-driven tests with behave
         run: |
           export PYTHONPATH=.
           behave tests/e2e
