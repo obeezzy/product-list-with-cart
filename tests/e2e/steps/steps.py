@@ -1,17 +1,13 @@
-import subprocess
-import os
-import time
-
 from behave import given, when, then
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from pathlib import Path
 
 driver = None
 TIMEOUT = 10
+
 
 class Quantity:
     def __init__(self, quantity):
@@ -32,6 +28,7 @@ class Quantity:
     def text(self):
         return self._quantityText
 
+
 class Price:
     def __init__(self, price):
         if isinstance(price, (int, float)):
@@ -51,8 +48,9 @@ class Price:
     def text(self):
         return self._priceText
 
+
 @given('I am on the "{page}" page')
-def step_impl(context, page):
+def step_impl(context, page):  # noqa: F811
     global driver
     print("Trying to open browser...")
 
@@ -65,8 +63,9 @@ def step_impl(context, page):
     print("Browser opened.", context.base_url)
     driver.get(context.base_url)
 
+
 @when('I click the "{button}" button')
-def step_impl(context, button):
+def step_impl(context, button):  # noqa: F811
     if button == "Add to Cart":
         driver.find_element(By.CSS_SELECTOR, "#menu .add-to-cart-button").click()
     elif button == "Remove from Cart":
@@ -82,8 +81,9 @@ def step_impl(context, button):
     else:
         raise RuntimeError(f"Unimplemented button: {button}")
 
+
 @then('an item should be added to my cart')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     try:
         item_element = WebDriverWait(driver, TIMEOUT).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "#cart .item"))
@@ -93,49 +93,57 @@ def step_impl(context):
     except TimeoutException:
         print(f"Element not found after {TIMEOUT} seconds.")
 
+
 @then('the quantity stepper should appear')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     quantity_stepper = driver.find_element(By.CSS_SELECTOR, "#menu .quantity-stepper")
     assert quantity_stepper.is_displayed(), "Quantity stepper was not displayed"
 
+
 @then('the quantity stepper should display a quantity of "{quantity}"')
-def step_impl(context, quantity):
+def step_impl(context, quantity):  # noqa: F811
     quantity_element = driver.find_element(By.CSS_SELECTOR, "#menu .quantity-stepper .quantity")
     assert quantity_element.text == quantity, "Quantity mismatch"
 
+
 @then('the item should be removed from my cart')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     try:
         not_located = WebDriverWait(driver, TIMEOUT).until_not(
             EC.presence_of_element_located((By.CSS_SELECTOR, "#cart .item"))
         )
-        assert not_located == True, "Item was not removed"
+        assert not_located, "Item was not removed"
     except TimeoutException:
         print(f"Element found after {TIMEOUT} seconds.")
 
+
 @then('the "{button}" button should appear')
-def step_impl(context, button):
+def step_impl(context, button):  # noqa: F811
     add_to_cart_button = driver.find_element(By.CSS_SELECTOR, "#menu .add-to-cart-button")
     assert add_to_cart_button.is_displayed(), '"Add to Cart" button was not displayed'
 
+
 @then('the "{button}" button should disappear')
-def step_impl(context, button):
+def step_impl(context, button):  # noqa: F811
     add_to_cart_button = driver.find_element(By.CSS_SELECTOR, "#menu .add-to-cart-button")
     assert not add_to_cart_button.is_displayed(), '"Add to Cart" button was displayed'
 
+
 @then('the quantity stepper should disappear')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     quantity_stepper = driver.find_element(By.CSS_SELECTOR, "#menu .quantity-stepper")
     assert not quantity_stepper.is_displayed(), 'Quantity stepper was displayed'
 
+
 @then('the quantity of the item in the cart should increase to "{quantity}"')
 @then('the quantity of the item in the cart should decrease to "{quantity}"')
-def step_impl(context, quantity):
+def step_impl(context, quantity):  # noqa: F811
     quantity_element = driver.find_element(By.CSS_SELECTOR, "#cart .quantity")
     assert quantity_element.text == Quantity(int(quantity)).text, "Quantity mismatch"
 
+
 @then('the order quantity of the item in the cart should be correct')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     elements = driver.find_elements(By.CSS_SELECTOR, "#cart .quantity")
     total_quantity = 0
     for quantity_element in elements:
@@ -144,8 +152,9 @@ def step_impl(context):
     order_quantity_element = driver.find_element(By.CSS_SELECTOR, "#cart #order-quantity")
     assert order_quantity_element.text == str(total_quantity), "Quantity mismatch"
 
+
 @then('the order total of the item in the cart should be correct')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     elements = driver.find_elements(By.CSS_SELECTOR, "#cart .total-cost")
     total_cost = 0
     for total_cost_element in elements:
@@ -157,8 +166,9 @@ def step_impl(context):
     else:
         assert order_total_element.text == Price(total_cost).text, "Order total mismatch"
 
+
 @then('the order summary dialog should be displayed')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     try:
         dialog_element = WebDriverWait(driver, TIMEOUT).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "dialog[open]"))
@@ -168,8 +178,9 @@ def step_impl(context):
     except TimeoutException:
         print(f"Element not found after {TIMEOUT} seconds.")
 
+
 @then('the order summary dialog should close')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     try:
         dialog_element = WebDriverWait(driver, TIMEOUT).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "dialog"))
@@ -178,12 +189,13 @@ def step_impl(context):
     except TimeoutException:
         print(f"Element not found after {TIMEOUT} seconds.")
 
+
 @then('my cart should be empty')
-def step_impl(context):
+def step_impl(context):  # noqa: F811
     try:
         not_located = WebDriverWait(driver, TIMEOUT).until_not(
             EC.presence_of_element_located((By.CSS_SELECTOR, "#cart .item"))
         )
-        assert not_located == True, "Cart is not empty"
+        assert not_located, "Cart is not empty"
     except TimeoutException:
         print(f"Element not found after {TIMEOUT} seconds.")
