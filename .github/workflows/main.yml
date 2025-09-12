@@ -43,7 +43,7 @@ jobs:
           CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+\.\d+' | head -1)
           wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
           unzip /tmp/chromedriver.zip -d /tmp/
-          sudo mv /tmp/chromedriver /usr/local/bin/
+          sudo mv $(find /tmp -iname chromedriver | head -1) /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
       - name: Kill any leftover Chrome processes
         run: pkill -f chrome || true
