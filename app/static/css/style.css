@@ -139,6 +139,11 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
     background-color: var(--color-bg);
+    scrollbar-gutter: stable;
+}
+
+html:has(dialog[open]:modal) {
+    overflow: hidden;
 }
 
 body {
