@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Product list with cart">
+        <meta name="author" content="Chronic Coder">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="/static/assets/images/favicon-32x32.png">
+        <script type="module" src="/static/js/index.js"></script>
+        <title>Frontend Mentor | Product list with cart</title>
+    </head>
+    <body id="index">
+        <div class="container">
+            <div id="menu-section">
+                <h1>Desserts</h1>
+                <div id="menu">
+                        <div class="item" data-key="waffle-with-berries" data-thumbnail="/static/assets/images/image-waffle-thumbnail.jpg" data-thumbnail-alt="Waffle with Berries">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-waffle-mobile.jpg 320w,
+                                             /static/assets/images/image-waffle-tablet.jpg 767w,
+                                             /static/assets/images/image-waffle-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-waffle-desktop.jpg"
+                                     alt="Waffle with Berries">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="waffle-with-berries">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="waffle-with-berries">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Waffle</h2>
+                                <p class="title">Waffle with Berries</p>
+                                <p class="price">$6.50</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="vanilla-bean-creme-brulee" data-thumbnail="/static/assets/images/image-creme-brulee-thumbnail.jpg" data-thumbnail-alt="Vanilla Bean Crème Brûlée">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-creme-brulee-mobile.jpg 320w,
+                                             /static/assets/images/image-creme-brulee-tablet.jpg 767w,
+                                             /static/assets/images/image-creme-brulee-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-creme-brulee-desktop.jpg"
+                                     alt="Vanilla Bean Crème Brûlée">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="vanilla-bean-creme-brulee">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="vanilla-bean-creme-brulee">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Crème Brûlée</h2>
+                                <p class="title">Vanilla Bean Crème Brûlée</p>
+                                <p class="price">$7.00</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="macaron-mix-of-five" data-thumbnail="/static/assets/images/image-macaron-thumbnail.jpg" data-thumbnail-alt="Macaron Mix of Five">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-macaron-mobile.jpg 320w,
+                                             /static/assets/images/image-macaron-tablet.jpg 767w,
+                                             /static/assets/images/image-macaron-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-macaron-desktop.jpg"
+                                     alt="Macaron Mix of Five">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="macaron-mix-of-five">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="macaron-mix-of-five">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Macaron</h2>
+                                <p class="title">Macaron Mix of Five</p>
+                                <p class="price">$8.00</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="classic-tiramisu" data-thumbnail="/static/assets/images/image-tiramisu-thumbnail.jpg" data-thumbnail-alt="Classic Tiramisu">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-tiramisu-mobile.jpg 320w,
+                                             /static/assets/images/image-tiramisu-tablet.jpg 767w,
+                                             /static/assets/images/image-tiramisu-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-tiramisu-desktop.jpg"
+                                     alt="Classic Tiramisu">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="classic-tiramisu">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="classic-tiramisu">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Tiramisu</h2>
+                                <p class="title">Classic Tiramisu</p>
+                                <p class="price">$5.50</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="pistachio-baklava" data-thumbnail="/static/assets/images/image-baklava-thumbnail.jpg" data-thumbnail-alt="Pistachio Baklava">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-baklava-mobile.jpg 320w,
+                                             /static/assets/images/image-baklava-tablet.jpg 767w,
+                                             /static/assets/images/image-baklava-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-baklava-desktop.jpg"
+                                     alt="Pistachio Baklava">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="pistachio-baklava">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="pistachio-baklava">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Baklava</h2>
+                                <p class="title">Pistachio Baklava</p>
+                                <p class="price">$4.00</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="lemon-meringue-pie" data-thumbnail="/static/assets/images/image-meringue-thumbnail.jpg" data-thumbnail-alt="Lemon Meringue Pie">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-meringue-mobile.jpg 320w,
+                                             /static/assets/images/image-meringue-tablet.jpg 767w,
+                                             /static/assets/images/image-meringue-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-meringue-desktop.jpg"
+                                     alt="Lemon Meringue Pie">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="lemon-meringue-pie">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="lemon-meringue-pie">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Pie</h2>
+                                <p class="title">Lemon Meringue Pie</p>
+                                <p class="price">$5.00</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="red-velvet-cake" data-thumbnail="/static/assets/images/image-cake-thumbnail.jpg" data-thumbnail-alt="Red Velvet Cake">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-cake-mobile.jpg 320w,
+                                             /static/assets/images/image-cake-tablet.jpg 767w,
+                                             /static/assets/images/image-cake-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-cake-desktop.jpg"
+                                     alt="Red Velvet Cake">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="red-velvet-cake">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="red-velvet-cake">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Cake</h2>
+                                <p class="title">Red Velvet Cake</p>
+                                <p class="price">$4.50</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="salted-caramel-brownie" data-thumbnail="/static/assets/images/image-brownie-thumbnail.jpg" data-thumbnail-alt="Salted Caramel Brownie">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-brownie-mobile.jpg 320w,
+                                             /static/assets/images/image-brownie-tablet.jpg 767w,
+                                             /static/assets/images/image-brownie-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-brownie-desktop.jpg"
+                                     alt="Salted Caramel Brownie">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="salted-caramel-brownie">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="salted-caramel-brownie">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Brownie</h2>
+                                <p class="title">Salted Caramel Brownie</p>
+                                <p class="price">$4.50</p>
+                            </div>
+                        </div>
+                        <div class="item" data-key="vanilla-panna-cotta" data-thumbnail="/static/assets/images/image-panna-cotta-thumbnail.jpg" data-thumbnail-alt="Vanilla Panna Cotta">
+                            <div class="image">
+                                <img srcset="/static/assets/images/image-panna-cotta-mobile.jpg 320w,
+                                             /static/assets/images/image-panna-cotta-tablet.jpg 767w,
+                                             /static/assets/images/image-panna-cotta-desktop.jpg 1200w"
+                                     sizes="(max-width: 767px) 100vw,
+                                            (min-width: 768px) 1200px"
+                                     src="/static/assets/images/image-panna-cotta-desktop.jpg"
+                                     alt="Vanilla Panna Cotta">
+                                <div class="controls">
+                                    <button class="add-to-cart-button" data-key="vanilla-panna-cotta">
+                                        <svg class="icon cart">
+                                            <use href="/static/icons/icons.svg#icon-add-to-cart" ></use>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                    <div class="quantity-stepper hidden" data-key="vanilla-panna-cotta">
+                                        <button class="decrement-quantity-button">
+                                            <svg class="icon decrement">
+                                                <use href="/static/icons/icons.svg#icon-decrement-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity">0</span>
+                                        <button class="increment-quantity-button">
+                                            <svg class="icon increment">
+                                                <use href="/static/icons/icons.svg#icon-increment-quantity" ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h2 class="category">Panna Cotta</h2>
+                                <p class="title">Vanilla Panna Cotta</p>
+                                <p class="price">$6.50</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div id="cart-section">
+                <div id="cart">
+                    <h2>Your Cart (<span id="order-quantity">0</span>)</h2>
+                    <div id="empty-cart-section">
+                        <svg class="icon empty-cart">
+                            <use href="/static/icons/icons.svg#illustration-empty-cart"></use>
+                        </svg>
+                        <p id="empty-cart-message">Your added items will appear here</p>
+                    </div>
+                    <div id="cart-content">
+                    </div>
+                    <div id="cart-footer" class="hidden">
+                        <div id="order-total-section">
+                            <span class="order-total-label">Order Total</span>
+                            <span id="order-total">$0.00</span>
+                        </div>
+                        <div id="order-info">
+                            <svg class="icon carbon-neutral">
+                                <use href="/static/icons/icons.svg#icon-carbon-neutral">></use>
+                            </svg>
+                            <p id="carbon-neutral-message">This is a <span class="bold">carbon-neutral</span> delivery</p>
+                        </div>
+                        <button id="confirm-order-button">Confirm Order</button>
+                    </div>
+                    <template id="cart-item-template">
+                        <div class="item" data-key="data-key">
+                            <div class="info">
+                                <span class="title">Item Title</span>
+                                <div class="details">
+                                    <span class="quantity">2x</span>
+                                    <span class="at-sign">@</span>
+                                    <span class="price">$5.00</span>
+                                    <span class="total-cost">$10.00</span>
+                                </div>
+                            </div>
+                            <button class="remove-from-cart-button" data-key="data-key">
+                                <svg class="remove icon">
+                                    <use href="/static/icons/icons.svg#icon-remove-item"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <dialog id="order-summary-dialog">
+            <svg class="icon order-confirmed">
+                <use href="/static/icons/icons.svg#icon-order-confirmed"></use>
+            </svg>
+            <div id="order-summary-header">
+                <h2>Order Confirmed</h2>
+                <p>We hope you enjoy your food!</p>
+            </div>
+            <div id="order-summary-content">
+                <div id="order-summary-items"></div>
+                <div id="order-summary-total-section">
+                    <span class="order-total-label">Order Total</span>
+                    <span id="order-summary-total">$0.00</span>
+                </div>
+            </div>
+            <button id="start-new-order-button">Start New Order</button>
+            <template id="order-summary-item-template">
+                <div class="item" data-key="data-key">
+                    <img class="thumbnail">
+                    <div class="info">
+                        <div class="details">
+                            <span class="title">Item Title</span>
+                            <div class="attributes">
+                                <span class="quantity">2x</span>
+                                <span class="at-sign">@</span>
+                                <span class="price">$5.00</span>
+                            </div>
+                        </div>
+                        <span class="total-cost">$10.00</span>
+                    </div>
+                </div>
+            </template>
+        </dialog>
+    </body>
+</html>
