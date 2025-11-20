@@ -15,10 +15,10 @@ def main():
             # ignore routes with parameters like /user/<id>
             if "<" in rule.rule:
                 continue
-            
+
             url = rule.rule
             print("Rendering:", url)
-            
+
             response = client.get(url)
             html = response.data.decode("utf-8")
 
